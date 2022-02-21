@@ -1,0 +1,46 @@
+Question -3
+nCr 
+Write a program to calculate the ways in which r elements can be selected from n population, using nCr formula nCr=n!/r!(n-r)! where first input being n and second input being r. 
+Note1 : n! factorial can be achieved using given formula n!=nx(n-1)x(n-2)x..3x2x1. 
+Note2 : 0! = 1. Example 5!=5x4x3x2x1=120 Include a class UserMainCode with a static method calculateNcr which accepts two integers. The return type (integer) should return the value of nCr. Create a Class Main which would be used to accept Input elements and call the static method present in UserMainCode.
+Input and Output Format: Input consists of 2 integers. 
+The first integer corresponds to n, the second integer corresponds to r.
+ Output consists of a single Integer. 
+Refer sample output for formatting specifications.
+ Sample Input 1: 4 3
+
+ANS.
+
+package com.org.gen.javatest2;
+
+import java.util.Scanner;
+
+class UsrMainCode{
+	static int calculateNcr(int n, int r)
+	{
+		return fact(n) / (fact(r) *
+					fact(n - r));
+	}
+
+	static int fact(int n)
+	{
+		int res = 1;
+		for (int i = 2; i <= n; i++)
+			res = res * i;
+		return res;
+	}
+}
+
+public class QuesThree extends UsrMainCode {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 Scanner s = new Scanner(System.in);
+	        int n = s.nextInt();
+	        int r = s.nextInt();
+		
+		System.out.println(calculateNcr(n, r));
+
+	}
+
+}
