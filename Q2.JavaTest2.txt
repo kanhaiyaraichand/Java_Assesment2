@@ -1,0 +1,52 @@
+Question-2 
+Write a program to read a string and validate whether the given string is a valid color code based on the following rules: - Must start with "#" symbol - Must contain six characters after # - It may contain alphabets from A-F or digits from 0-9 Include a class UserMainCode with a static method validateColorCode which accepts a string. The return type (integer) should return 1 if the color is as per the rules else return -1. Create a Class Main which would be used to accept a String and call the static method present in UserMainCode.
+ Input and Output Format: 
+Input consists of a string. 
+Output consists of a string (Valid or Invalid). Refer sample output for formatting specifications. Sample Input 1:
+#FF9922 
+Sample Output 1: Valid
+ Sample Input 2: #FF9(22 
+Sample Output 2: Invali
+Ans.
+
+package com.org.gen.javatest2;
+import java.util.*;
+
+class UserMainCod{
+	  public static boolean validateColorCode(String s1) {
+	        boolean b = false, b1 = false;
+	        String s2 = s1.substring(1, s1.length());
+	        if (s1.length() == 7)
+	            if (s1.charAt(0) == '#')
+	            b1 = true;
+	        if (b1 == true)
+	            for (int i = 0; i < s2.length(); i++) {
+	            char c = s2.charAt(i);
+	            if (c != '#') {
+	                if (s2.matches("[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}"))
+	                    b = true;
+	                else {
+	                    b = false;
+	                    break;
+	                }
+	            }
+	        }
+	        return b;
+	    }
+}
+
+public class QuesTwo extends UserMainCod {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 Scanner s = new Scanner(System.in);
+	        String s1 = s.next();
+	        boolean b = validateColorCode(s1);
+	        if (b == true)
+	            System.out.println("Valid");
+	        else
+	            System.out.println("Invalid");
+
+	}
+
+}
